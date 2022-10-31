@@ -31,6 +31,13 @@ func (e *APIError) Error() string {
 	return "something went wrong with the iCS-VPN API :-/"
 }
 
+type InstanceNotFoundError struct {
+}
+
+func (e *InstanceNotFoundError) Error() string {
+	return "instance not found"
+}
+
 type DuplicateDeviceNameError struct{}
 
 func (e *DuplicateDeviceNameError) Error() string {
