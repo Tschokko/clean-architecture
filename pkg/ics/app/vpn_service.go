@@ -1,7 +1,7 @@
 package app
 
 type apiService interface {
-	CreateDevice(device Device) (*Device, error)
+	CreateDevice(instanceID int, device Device) (*Device, error)
 }
 
 type Device struct {
@@ -20,12 +20,12 @@ func NewVPNService(api apiService) VPNService {
 	}
 }
 
-func (c *VPNService) CreateIcomOSDevice(name DeviceName, serialNumber SerialNumber) (*Device, error) {
+func (c *VPNService) CreateIcomOSDevice(instanceID int, name DeviceName, serialNumber SerialNumber) (*Device, error) {
 	device := Device{
 		DeviceTypeIcomOS,
 		name,
 		serialNumber,
 	}
 
-	return c.api.CreateDevice(device)
+	return c.api.CreateDevice(instanceID, device)
 }
